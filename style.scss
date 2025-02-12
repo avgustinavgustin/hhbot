@@ -1,0 +1,357 @@
+// Цвета
+$color-black:      #2b2b2b;  // Тёмный для текста и акцентов
+
+$color-font-base:  #fff;
+$color-block:      #857257; 
+$color-background: #d6b25e;
+
+// Акцентные цвета
+$color-green:      #84f82d;
+$color-light-green:#719156;
+
+$color-red:        #ffd2c6;
+$color-light-red:  #bc725f;
+
+
+$set-transition: color .2s ease, background-color .2s ease;
+
+// Все размеры и отсутпы кратны 4
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed&display=swap');
+
+.vf {
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    top: 8px;
+    left: 8px;
+    z-index: 9999999;
+
+    &.hide {
+        height: 31px;
+        overflow: hidden;
+        width: 288px;
+        border-radius: 8px;
+    }
+
+    &-main-header {
+        position: relative;
+    }
+
+    &-panel-hide-open {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        right: 0;
+        transition: $set-transition;
+
+        &:hover {
+            color: $color-font-base;
+        }
+    }
+
+    &-main, &-menu {
+        padding: 8px;
+        border-radius: 8px;
+        margin-right: 8px;
+        background-color: $color-background;
+        color: $color-black;
+    
+        min-width: 288px;
+        max-width: 288px;
+        height: fit-content;
+        box-sizing: border-box;
+    
+        * {
+            font-family: "Fira Sans Condensed", serif;
+            font-weight: 400;
+            font-style: 14px;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: $color-font-base;
+            display: inline-block;
+        }
+    
+        &__item {
+            margin-top: 8px;
+            padding: 8px;
+            border-radius: 8px;
+            transition: $set-transition;
+    
+            p:first-child {
+                margin-bottom: 8px;
+            }
+        }
+    }
+
+    &-status {
+        background-color: $color-block;
+        color: $color-font-base;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        line-height: 14px;
+        height: 28px;
+        box-sizing: content-box;
+    }
+
+    &-start-stop {
+        display: flex;
+        flex-direction: row;
+        margin: 16px 0;
+        padding-left: 0;
+    }
+
+    &-start {
+        cursor: pointer;
+        background-color: $color-light-green;
+        color: $color-green;
+        padding: 8px;
+        border-radius: 96px;
+        margin-right: 8px;
+        transition: $set-transition;
+
+        &:hover {
+            color: $color-font-base;
+        }
+    }
+
+    &-stop {
+        cursor: pointer;
+        background-color: $color-light-red;
+        color: $color-red;
+        padding: 8px;
+        border-radius: 96px;
+        transition: $set-transition;
+
+        &:hover {
+            color: $color-font-base;
+        }
+    }
+
+    &-succ-res {
+        cursor: pointer;
+        background-color: $color-block;
+
+        p:first-child {
+            color: $color-green;
+            margin-bottom: 8px;
+        }
+
+        &:hover {
+            background-color: $color-light-green;
+        }
+    }
+
+    &-fail-res {
+        cursor: pointer; 
+        background-color: $color-block;
+
+        p:first-child {
+            color: $color-red;
+            margin-bottom: 8px;
+        }
+
+        &:hover {
+            background-color: $color-light-red;
+        }
+    }
+
+    &-settings {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        color: $color-font-base;
+        padding-left: 0;
+        padding-right: 0;
+        cursor: pointer;
+
+        > * {
+            background-color: $color-block;
+            padding: 8px;
+            border-radius: 96px;
+        }
+    }
+
+    &-menu {
+        
+        &-header {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: $color-black 1px solid;
+            padding-bottom: 8px;
+            margin-bottom: 8px;
+        }
+
+        &-close {
+            cursor: pointer;
+        }
+
+        &__content {
+            &__item {
+                border-bottom: $color-block 1px solid;
+                padding-bottom: 8px;
+                margin: 8px 0;
+
+                textarea, input, select{
+                    width: 100%;
+                    background-color: $color-block;
+                    color: $color-font-base;
+                    padding: 8px;
+                    font-weight: 14px;
+                    font-size: 14px;
+                    outline: none;
+                    resize: none;
+                    border-radius: 8px;
+                    margin-top: 4px;
+                    border: none;
+                }
+
+                textarea {
+                    height: 58px;
+                }
+            }
+        }
+    }
+
+    &-toggle {
+        display: flex;
+        flex-direction: row;
+        margin: 8px 0;
+
+        &__item {
+            input[type=radio] {
+                display: none;
+
+                &:checked + label{
+                    background-color: $color-block;
+                    color: $color-font-base;
+                }
+            }
+
+            &:first-child label {
+                border-radius: 8px 0 0 8px;
+                border-right: none;
+            }
+
+            &:last-child label {
+                border-radius: 0 8px 8px 0;
+            }
+
+            label {
+                display: block;
+                cursor: pointer;
+	            user-select: none;
+
+                padding: 8px;
+                color: $color-black;
+                border: $color-black 1px solid;
+                transition: $set-transition;
+            }
+        }
+    }
+
+    &-vacancies {
+        max-height: 480px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        scrollbar-width: thin;
+        scrollbar-color: $color-block transparent;
+
+        &::-webkit-scrollbar {
+            width: 8px;
+        }
+        &::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        &::-webkit-scrollbar-thumb {
+            background-color: $color-block;
+        }
+
+        &__item {
+            border-bottom: $color-block 1px solid;
+            margin-top: 8px;
+
+            &:last-child {
+                border: none;
+            }
+        }
+        &__info {
+            margin-top: 8px;
+
+            p {
+                &:first-child {
+                    color: $color-block;
+                    font-size: 12px;
+                }
+            }
+
+            a, div {
+                padding: 8px;
+                border-radius: 96px;
+                display: inline-block;
+                margin-bottom: 8px;
+                width: max-content;
+                transition: $set-transition;
+                cursor: pointer;
+            }
+        }
+    }
+
+    &-a-def {
+        background-color: $color-block;
+        color: $color-font-base;
+    }
+
+    &-a-del {
+        background-color: $color-light-red;
+        color: $color-red;
+
+        &:hover {
+            color: $color-font-base;
+        }
+    }
+
+    &-a-to-suc {
+        background-color: $color-light-green;
+        color: $color-green;
+
+        &:hover {
+            color: $color-font-base;
+        }
+    }
+
+    &-panel-not {
+        padding-top: 32px;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-color: $color-background;
+
+        &-btn {
+            background-color: $color-block;
+            color: $color-font-base;
+            padding: 8px;
+            margin-top: 8px;
+            border-radius: 96px;
+            cursor: pointer;
+            display: inline-block;
+        }
+    }
+
+    &-see-not {
+        > *:not(.vf-main-header) {
+            display: none;
+        }
+
+        .vf-panel-not {
+            display: block !important;
+        }
+    }
+}
